@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>权限后台管理</title>
+    <link rel="stylesheet" href="../../static/css/auth.css">
+</head>
+
+<body>
+<div class="lowin">
+    <div class="lowin-brand">
+        <img src="../../static/img/kodinger.jpg" alt="logo">
+    </div>
+    <div class="lowin-wrapper">
+        <div class="lowin-box lowin-login">
+            <div class="lowin-box-inner">
+                <form>
+                    <p>Sign in to continue</p>
+                    <div class="lowin-group password-group">
+                        <label>Password <a href="#" class="forgot-link">Forgot Password?</a></label>
+                        <input type="password" name="password" autocomplete="current-password" class="lowin-input">
+                    </div>
+                    <button class="lowin-btn login-btn">
+                        Sign In
+                    </button>
+
+                    <div class="text-foot">
+                        Don't have an account? <a href="" class="register-link">Register</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="lowin-box lowin-register">
+            <div class="lowin-box-inner">
+                <form>
+                    <p>管理员登录</p>
+                    <div class="lowin-group">
+                        <label>Name</label>
+                        <input type="text" name="name" autocomplete="name" class="lowin-input">
+                    </div>
+                    <div class="lowin-group">
+                        <label>Password</label>
+                        <input id="pwd" type="password" name="password" autocomplete="current-password" class="lowin-input">
+                    </div>
+                    <button class="lowin-btn" id="lowin2">
+                        登   录
+                    </button>
+
+                    <div class="text-foot">
+                       遇  到  了  问  题  ?   <a href="" class="login-link">Login</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer class="lowin-footer">
+        Design By @itskodinger. More Templates <a href="#" target="_blank" title="模板之家">后台管理</a>
+        - Collect from <a href="#" title="" target="_blank">管理员</a>
+    </footer>
+</div>
+
+<script src="../../static/js/jquery-3.4.1.min.js"></script>
+<script type="application/javascript">
+    $(function () {
+
+        $("#lowin2").click(function () {
+
+             var name = $('input[name="name"]').val();
+             var ps = $('#pwd').val();
+            alert(name + ps);
+            $.ajax({
+                url: './blog/ajax',
+                type: 'GET',
+                data: {name: name, password: ps},
+                datatype: 'json',
+                success: function (data) {
+                    window.location.href = "http://127.0.0.1:8000/blog/frame"
+                },
+                error: function () {
+                    alert('失败');
+                }
+            });
+        });
+    });
+    </script>
+</body>
+</html>
